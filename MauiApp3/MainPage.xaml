@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp3"
+             x:Class="MauiApp3.MainPage">
+    <ContentPage.BindingContext>
+        <local:TestViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="templateRed" x:DataType="local:Element">
+                <Label Text="{Binding Name}" TextColor="Red" />
+            </DataTemplate>
+            <local:TemplateSelector x:Key="selector" 
+                                    DefaultTemplate="{StaticResource templateRed}"  />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout>
+            <FlexLayout BindableLayout.ItemsSource="{Binding Elements}" 
+                        BindableLayout.ItemTemplate="{StaticResource templateRed}"/>
+            <FlexLayout BindableLayout.ItemsSource="{Binding Elements}" 
+                        BindableLayout.ItemTemplate="{StaticResource selector}"/>
+            <CollectionView ItemsSource="{Binding Elements}" 
+                            ItemTemplate="{StaticResource selector}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
