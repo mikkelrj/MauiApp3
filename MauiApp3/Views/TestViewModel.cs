@@ -1,8 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿namespace TestApp.Views;
 
-namespace TestApp.Views;
-
-public partial class TestViewModel : ObservableObject
+public class TestViewModel
 {
     public TestViewModel()
     {
