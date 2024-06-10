@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TestApp.Views"
+             x:Class="TestApp.Views.NewPage1"
+             Title="NewPage1">
+
+    <ContentPage.Resources>
+
+        <DataTemplate x:Key="ItemTemplate1" x:DataType="local:TestViewModel">
+            <Grid RowDefinitions="24" 
+                  ColumnDefinitions="*,*">
+                <Label Grid.Column="0" Grid.Row="1" Text="{Binding Value1, Mode=OneTime}"/>
+                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Value2, Mode=OneTime}"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ItemTemplate2" x:DataType="local:TestViewModel">
+            <Grid RowDefinitions="24,24" 
+                  ColumnDefinitions="*,*,*,*">
+                <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text=" " />
+                            <Span Text="{Binding Value5, Mode=OneTime}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Grid.Column="1" Grid.Row="0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text=" "  />
+                            <Span Text="{Binding Value6, Mode=OneTime}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Grid.Column="0" Grid.Row="1" Text="{Binding Value1, Mode=OneTime}"/>
+                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Value2, Mode=OneTime}"/>
+                <Label Grid.Column="2" Grid.Row="1" Text="{Binding Value3, Mode=OneTime}"/>
+                <Label Grid.Column="3" Grid.Row="1" Text="{Binding Value4, Mode=OneTime}"/>
+            </Grid>
+        </DataTemplate>
+
+    </ContentPage.Resources>
+
+    <CollectionView x:Name="listView" 
+                ItemTemplate="{StaticResource ItemTemplate2}"
+                VerticalOptions="Fill"/>
+
+</ContentPage>
